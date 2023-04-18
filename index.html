@@ -8,39 +8,28 @@
     <link rel="stylesheet" type="text/css" href="fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
-    <title>Bloco de Notas Web</title>
+    <title>ListApp</title>
 </head>
 <body>
     <header class="cabecalho">
-        <h1>Bloco de Notas Web</h1>
+        <h1>ListApp</h1>
     </header>
     <main class="conteudo">
         <section class="caixa-texto">
             <form action="" class="form">
-                <textarea name="" id="" class="textarea" placeholder="Digite uma nota aqui..."></textarea>
-                <div class="button">
-                    <a href="#" class="icon-style">
+                <textarea name="" id="textarea-add" class="textarea" placeholder="Digite uma nota aqui..."></textarea>
+                <div class="button-grid">
+                    <button class="button-style" id="bt-adicionar">
                         <abbr title="Salvar nota">
                             <i class="fa-solid fa-floppy-disk"></i>
                         </abbr>
-                    </a>
+                    </button>
                 </div>
             </form>
-            <ul class="lista-itens">
-                <li class="item-lista">
-                    <textarea name="" id="" class="textarea">Item 1</textarea>
-                    <div class="button">
-                        <a href="#" class="icon-style">
-                            <abbr title="Excluir nota">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </abbr>
-                        </a>
-                    </div>
-                </li>
-            </ul>
+            <ul class="lista-itens" id="ul-itens"></ul>
         </section>
     </main>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

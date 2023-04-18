@@ -47,6 +47,7 @@ body {
     overflow: auto;
     scrollbar-width: 0.8rem;
     scrollbar-color: #ddd transparent;
+    box-shadow: 3px 3px 8px black;
 }
 
 .caixa-texto::-webkit-scrollbar {
@@ -84,6 +85,7 @@ body {
     font-family: 'Lato', sans-serif;
     scrollbar-width: 0.8rem;
     scrollbar-color: var(--bg-color) transparent;
+    box-shadow: 3px 3px 8px black;
 }
 
 .textarea:hover {
@@ -109,20 +111,30 @@ body {
     border-radius: 0.8rem;
 }
 
-.button {
+.button-grid {
     margin-left: 1.5rem;
-    background-color: var(--bg-color);
     padding: .5rem .75rem;
-    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
-.icon-style {
+.button-style {
+    background: transparent;
+    border: none;
     color: white;
     font-size: 1.2rem;
+    background-color: var(--bg-color);
+    border-radius: 1.5rem;
+    box-shadow: 3px 3px 8px black;
+    padding: .5rem .75rem;
+    display: flex;
+    align-items: center;
 }
 
-.icon-style:hover {
+.button-style:hover {
     color: crimson;
+    cursor: pointer;
 }
 
 .lista-itens {
