@@ -1,11 +1,5 @@
 const btAdicionar = document.querySelector('#bt-adicionar')
-const btExcluir = document.querySelector('#bt-excluir')
-const textAreaAdd = document.querySelector('#textarea-add')
-const textAreaEdit = document.querySelector('#textarea-edit')
-
 const itens = JSON.parse(localStorage.getItem("itemList")) || []
-
-console.log(itens)
 
 itens.forEach((elemento) => {
     adicionarElemento(elemento.nota)
@@ -14,14 +8,14 @@ itens.forEach((elemento) => {
 btAdicionar.addEventListener('click', (evento) => {
     evento.preventDefault()
 
-    if(textAreaAdd.value !== "") {
+    const textAreaAdd = document.querySelector('#textarea-add')
 
+    if(textAreaAdd.value !== "") {
         const novoItem = {
             "nota": textAreaAdd.value
         }
 
         adicionarElemento(novoItem)
-
         itens.push(novoItem)
 
         localStorage.setItem("itemList", JSON.stringify(itens))
@@ -29,26 +23,45 @@ btAdicionar.addEventListener('click', (evento) => {
         textAreaAdd.value = ""
     }
 })
-/*
-btExcluir.addEventListener('click', function() {
-    console.log("Botão excluir pressionado")
-    console.log(textAreaEdit.value)
-}) */
 
 function adicionarElemento(item) {
     const itemLista = document.createElement('li')
     itemLista.classList.add('item-lista')
 
-    itemLista.innerHTML = `
-        <textarea name="" id="textarea-edit" class="textarea">${item}</textarea>
-        <div class="button-grid">
-            <button class="button-style" id="bt-excluir">
-                <abbr title="Salvar nota">
-                    <i class="fa-solid fa-trash-can"></i>
-                </abbr>
-            </button>
-        </div>`
+    const textAreaEdit = document.createElement('textarea')
+    textAreaEdit.classList.add('textarea')
+    textAreaEdit.dataset.id = item.id
+    textAreaEdit.innerHTML = item
+
+    itemLista.appendChild(textAreaEdit)
 
     const ulItens = document.querySelector('#ul-itens')
     ulItens.appendChild(itemLista)
+
+    itemLista.appendChild(botaoExcluir(item.id))
 }
+
+function botaoExcluir() {
+    const btExcluir = document.createElement('button')
+    btExcluir.classList.add('button-style')
+
+    btExcluir.innerHTML = `
+        <abbr title="Excluir nota">
+            <i class="fa-solid fa-trash-can"></i>
+        </abbr>
+    `
+
+    btExcluir.addEventListener('click', function() {
+        excluirElemento(this.parentNode)
+    })
+
+    return btExcluir
+}
+
+function excluirElemento(tag) {
+    tag.remove()
+
+    itens.splice(tag, 1)
+
+    localStorage.setItem("itemList", JSON.stringify(itens))
+}   
